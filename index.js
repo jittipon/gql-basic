@@ -58,7 +58,7 @@ const resolvers = {
         updateUser: (parent,args) => {
             const user = users.find(user => user.name === args.name)
             
-            if(user==undefined){
+            if(user == undefined){
                 throw new Error("User not found");
             }
             
