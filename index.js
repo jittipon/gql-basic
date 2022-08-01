@@ -41,7 +41,7 @@ const resolvers = {
         users: () => users
     },
     Mutation: {
-        addUser: (parent,args) => {
+        addUser: (parent, args) => {
             const newUser = {
                 name: args.name,
                 age: args.age,
@@ -50,23 +50,26 @@ const resolvers = {
             users.push(newUser)
             return newUser
         },
-        deleteUser: (parent,args) => {
+        deleteUser: (parent, args) => {
             const user = users.find(user => user.name === args.name)
             users = users.filter(user => user.name !== args.name)
             return user.name
         },
-        updateUser: (parent,args) => {
+        updateUser: (parent, args) => {
             const user = users.find(user => user.name === args.name)
-            
-            if(user == undefined){
+
+            if (user == undefined) {
                 throw new Error("User not found");
             }
-            
-            user.name = args.name
-            user.age = args.age
-            user.position = args.position
-            user.name = args.newname
-            return user
+            else {
+                user.name = args.name
+                user.age = args.age
+                user.position = args.position
+                user.name = args.newname
+                return user
+
+            }
+
         }
     }
 };
